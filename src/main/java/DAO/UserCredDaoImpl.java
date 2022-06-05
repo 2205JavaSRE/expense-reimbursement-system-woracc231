@@ -14,14 +14,13 @@ public class UserCredDaoImpl implements UserCredDao {
 
 	@Override
 	public void insertUserCred(UserCredentials user) {
-		String sqlString = "INSERT INTO user_cred(id, username, pass) VALUES(?,?,?)";
+		String sqlString = "INSERT INTO user_cred(username, pass) VALUES(?,?)";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqlString)) {
-			pStatement.setInt(1, user.getId());
-			pStatement.setString(2, user.getUsername());
-			pStatement.setString(3, user.getPassword());
+			pStatement.setString(1, user.getUsername());
+			pStatement.setString(2, user.getPassword());
 			pStatement.execute();
 			
 		} catch (SQLException e) {

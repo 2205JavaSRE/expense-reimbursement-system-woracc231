@@ -15,16 +15,15 @@ public class UserMetaDaoImpl implements UserMetaDao {
 
 	@Override
 	public void insertUserMeta(UserMeta user) {
-		String sqlString = "INSERT INTO user_meta(id, user_id, firstname, lastname, finance_manager) VALUES(?,?,?,?,?)";
+		String sqlString = "INSERT INTO user_meta(user_id, firstname, lastname, finance_manager) VALUES(?,?,?,?)";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqlString)) {
-			pStatement.setInt(1, user.getId());
-			pStatement.setInt(2, user.getUserID());
-			pStatement.setString(3, user.getFirstName());
-			pStatement.setString(4, user.getLastName());
-			pStatement.setBoolean(5, user.getIsFinanceManager());
+			pStatement.setInt(1, user.getUserID());
+			pStatement.setString(2, user.getFirstName());
+			pStatement.setString(3, user.getLastName());
+			pStatement.setBoolean(4, user.getIsFinanceManager());
 			pStatement.execute();
 			
 		} catch (SQLException e) {
