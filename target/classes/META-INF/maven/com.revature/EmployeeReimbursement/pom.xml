@@ -24,6 +24,7 @@
               <classpathPrefix>libs/</classpathPrefix>
               <mainClass>Main</mainClass>              
             </manifest>
+            <manifestFile>src/target/classes/META-INF/MANIFEST.MF</manifestFile>>
           </archive>
         </configuration>
       </plugin>
