@@ -1,5 +1,7 @@
 package Controller;
 
+import org.eclipse.jetty.http.HttpStatus;
+
 import io.javalin.Javalin;
 
 public class RequestMapping {
@@ -14,16 +16,29 @@ public class RequestMapping {
 		
 		app.get("/logout", ctx ->{
 			ctx.consumeSessionAttribute("userID");
+			ctx.consumeSessionAttribute("isFinanceManager");
 		});
 		
 		
 		//---Non-Finance Managers' Options
-		app.post("/SubmitRequest", ctx ->{
-			
+		app.post("/SubmitRequest", ctx ->{//Form parameter : reimburseAmount, ticketType(lodging, travel, food, other)
+			if(AuthenticationController.VerifyUserLogInStatus(ctx)) {
+				TicketController tController = new TicketController();
+				tController.submitNewTicket(ctx);
+			}else {
+				ctx.status(HttpStatus.FORBIDDEN_403);
+			}
+
 		});
 		
 		app.get("/ViewPastRequests", ctx ->{
-			
+			if(AuthenticationController.VerifyUserLogInStatus(ctx)) {
+				TicketController tController = new TicketController();
+				tController.getAllTicketsWithUserID(ctx);
+			}
+			else {
+				ctx.status(HttpStatus.FORBIDDEN_403);
+			}
 		});
 		
 		//--------------------------------
@@ -32,11 +47,24 @@ public class RequestMapping {
 		
 		
 		app.get("/ViewAllRequests", ctx ->{
-			
+			boolean isFM = Boolean.parseBoolean(ctx.sessionAttribute("isFinanceManager"));
+			if(AuthenticationController.VerifyUserLogInStatus(ctx) && isFM) {//fix boolean stuff for checking financial manager
+				TicketController tController = new TicketController();
+				tController.getAllTickets(ctx);
+			}
+			else {
+				ctx.status(HttpStatus.FORBIDDEN_403);
+			}			
 		});
 		
-		app.post("/ApproveRequests", ctx ->{
-			
+		app.post("/ApproveRequests", ctx ->{//Form parameter: ticketID, ticketStatus
+			if(AuthenticationController.VerifyUserLogInStatus(ctx) && Boolean.valueOf(ctx.sessionAttribute("isFinanceManager"))) {
+				TicketController tController = new TicketController();
+				tController.changeTicketStatus(ctx);
+			}
+			else {
+				ctx.status(HttpStatus.FORBIDDEN_403);
+			}			
 		});
 		
 		

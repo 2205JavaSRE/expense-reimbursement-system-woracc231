@@ -7,6 +7,7 @@ import Services.AuthenticationService;
 import io.javalin.http.Context;
 
 public class AuthenticationController {
+	
 	public static void AuthenticateUserForSession(Context ctx) {
 		String username = ctx.formParam("username");
 		String password = ctx.formParam("password");
@@ -22,19 +23,21 @@ public class AuthenticationController {
 			ctx.result("Login Successful");
 			ctx.status(HttpStatus.ACCEPTED_202);
 			
-			ctx.sessionAttribute("userID", user.getUserID());
+			ctx.sessionAttribute("userID", user);
+			ctx.sessionAttribute("isFinanceManager", user.getIsFinanceManager());
 			
 		}
 		
 	}
 	
 	public static boolean VerifyUserLogInStatus(Context ctx) {
-		Integer userID = Integer.valueOf(ctx.sessionAttribute("userID"));
+		UserMeta user = (ctx.sessionAttribute("userID"));
 		
-		if(userID == null) {
+		if(user == null) {
 			return false;
 		}
 		return true;
 	}
+	
 	
 }

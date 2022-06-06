@@ -14,7 +14,8 @@ Class-Path: libs/postgresql-42.3.3.jar libs/checker-qual-3.5.0.jar libs/
  20331.jar libs/kotlin-stdlib-jdk8-1.5.32.jar libs/kotlin-stdlib-1.5.32.
  jar libs/annotations-13.0.jar libs/kotlin-stdlib-common-1.5.32.jar libs
  /kotlin-stdlib-jdk7-1.5.32.jar libs/jackson-core-2.13.3.jar libs/slf4j-
- api-1.7.36.jar libs/slf4j-simple-1.7.31.jar
+ api-1.7.36.jar libs/slf4j-simple-1.7.31.jar libs/jackson-databind-2.13.
+ 2.2.jar libs/jackson-annotations-2.13.2.jar
 Specification-Title: EmployeeReimbursement
 Specification-Version: 0.0.1-SNAPSHOT
 Implementation-Title: EmployeeReimbursement

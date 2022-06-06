@@ -21,6 +21,15 @@ public class ReimbursementTicket {
 		this.ticketType = ticketType;
 		this.ticketStatus = ticketStatus;
 	}
+	
+	public ReimbursementTicket(int userID, int reimburseAmount, String ticketType, String ticketStatus) {
+		super();
+		this.userID = userID;
+		this.reimburseAmount = reimburseAmount;
+		this.ticketType = ticketType;
+		this.ticketStatus = ticketStatus;
+	}
+
 
 	public int getId() {
 		return id;

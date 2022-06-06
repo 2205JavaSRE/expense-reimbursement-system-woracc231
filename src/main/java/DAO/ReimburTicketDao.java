@@ -7,7 +7,7 @@ import Models.ReimbursementTicket;
 public interface ReimburTicketDao {
 	public void insertTicket(ReimbursementTicket ticket);
 	public ReimbursementTicket selectByTicketID(int ticketID);
-	public ReimbursementTicket selectByUserID(int userID);
+	public List<ReimbursementTicket> selectByUserID(int userID);
 	public List<ReimbursementTicket> selectByTicketType(String ticketType);
 	public List<ReimbursementTicket> selectByTicketStatus(String ticketStatus);
 	public List<ReimbursementTicket> selectAllTickets();

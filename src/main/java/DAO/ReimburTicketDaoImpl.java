@@ -15,7 +15,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 
 	@Override
 	public void insertTicket(ReimbursementTicket ticket) {
-		String sqlString = "INSERT INTO reimbursement_ticket(user_id, reimburse_amount, current_ticket_type, current_ticket_status) VALUES(?,?,?,?)";
+		String sqlString = "INSERT INTO reimbursement_ticket(user_id, reimburse_amount, current_ticket_type, current_ticket_status) VALUES(?,?,CAST(? AS ticket_type),CAST(? AS ticket_status))";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
@@ -55,25 +55,28 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 	}
 
 	@Override
-	public ReimbursementTicket selectByUserID(int userID) {
+	public List<ReimbursementTicket> selectByUserID(int userID) {
 		String sqString = "SELECT * FROM reimbursement_ticket WHERE user_id=?";
 		
 		Connection connection = ConnectionService.ReturnConnection();
+		List<ReimbursementTicket> ticketList = new ArrayList<>();
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqString)){
 			pStatement.setInt(1, userID);
 			ResultSet rSet = pStatement.executeQuery();
 			while(rSet.next()) {
-				return new ReimbursementTicket(rSet.getInt("id"), 
+				ReimbursementTicket ticket = new ReimbursementTicket(rSet.getInt("id"), 
 						rSet.getInt("user_id"),
 						rSet.getInt("reimburse_amount"),
 						rSet.getString("current_ticket_type"),
 						rSet.getString("current_ticket_status"));
+				
+				ticketList.add(ticket);
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return ticketList;
 	}
 
 	@Override
