@@ -158,7 +158,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 
 	@Override
 	public void updateReimburseAmount(ReimbursementTicket ticket, int amount) {
-		String sqlString = "UPDATE reimbursement_ticket SET reimburse_amount=? WHERE user_id=?";
+		String sqlString = "UPDATE reimbursement_ticket SET reimburse_amount=? WHERE id=?";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
@@ -175,7 +175,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 
 	@Override
 	public void updateTicketType(ReimbursementTicket ticket, String ticketType) {
-		String sqlString = "UPDATE reimbursement_ticket SET current_ticket_type=? WHERE user_id=?";
+		String sqlString = "UPDATE reimbursement_ticket SET current_ticket_type=? WHERE id=?";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
@@ -192,7 +192,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 
 	@Override
 	public void updateTicketStatus(ReimbursementTicket ticket, String ticketStatus) {
-		String sqlString = "UPDATE reimbursement_ticket SET current_ticket_status=CAST(? AS ticket_status) WHERE user_id=?";
+		String sqlString = "UPDATE reimbursement_ticket SET current_ticket_status=CAST(? AS ticket_status) WHERE id=?";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
@@ -209,7 +209,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 
 	@Override
 	public void deleteTicket(ReimbursementTicket ticket) {
-		String sqlString = "DELETE FROM reimbursement_ticket WHERE user_id=?";
+		String sqlString = "DELETE FROM reimbursement_ticket WHERE id=?";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		
