@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Connection.ConnectionService;
-import Models.UserCredentials;
 import Models.UserMeta;
 
 public class UserMetaDaoImpl implements UserMetaDao {

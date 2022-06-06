@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Built-By: Me
+Build-Jdk: 17.0.2
+Class-Path: libs/postgresql-42.3.3.jar libs/checker-qual-3.5.0.jar libs/
+ javalin-4.6.0.jar libs/jetty-server-9.4.46.v20220331.jar libs/javax.ser
+ vlet-api-3.1.0.jar libs/jetty-http-9.4.46.v20220331.jar libs/jetty-util
+ -9.4.46.v20220331.jar libs/jetty-io-9.4.46.v20220331.jar libs/jetty-web
+ app-9.4.46.v20220331.jar libs/jetty-xml-9.4.46.v20220331.jar libs/jetty
+ -servlet-9.4.46.v20220331.jar libs/jetty-security-9.4.46.v20220331.jar 
+ libs/jetty-util-ajax-9.4.46.v20220331.jar libs/websocket-server-9.4.46.
+ v20220331.jar libs/websocket-common-9.4.46.v20220331.jar libs/websocket
+ -api-9.4.46.v20220331.jar libs/websocket-client-9.4.46.v20220331.jar li
+ bs/jetty-client-9.4.46.v20220331.jar libs/websocket-servlet-9.4.46.v202
+ 20331.jar libs/kotlin-stdlib-jdk8-1.5.32.jar libs/kotlin-stdlib-1.5.32.
+ jar libs/annotations-13.0.jar libs/kotlin-stdlib-common-1.5.32.jar libs
+ /kotlin-stdlib-jdk7-1.5.32.jar libs/jackson-core-2.13.3.jar libs/slf4j-
+ api-1.7.36.jar libs/slf4j-simple-1.7.31.jar
+Specification-Title: EmployeeReimbursement
+Specification-Version: 0.0.1-SNAPSHOT
+Implementation-Title: EmployeeReimbursement
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.revature
+Main-Class: Main
+Created-By: Maven Integration for Eclipse
+

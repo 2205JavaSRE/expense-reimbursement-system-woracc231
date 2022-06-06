@@ -13,8 +13,35 @@ public class RequestMapping {
 		
 		
 		app.get("/logout", ctx ->{
-			ctx.sessionAttribute("userID", 0);
+			ctx.consumeSessionAttribute("userID");
 		});
+		
+		
+		//---Non-Finance Managers' Options
+		app.post("/SubmitRequest", ctx ->{
+			
+		});
+		
+		app.get("/ViewPastRequests", ctx ->{
+			
+		});
+		
+		//--------------------------------
+		
+		//Finance Manager Options
+		
+		
+		app.get("/ViewAllRequests", ctx ->{
+			
+		});
+		
+		app.post("/ApproveRequests", ctx ->{
+			
+		});
+		
+		
+		
+		
 		
 		
 		
