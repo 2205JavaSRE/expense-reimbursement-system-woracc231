@@ -222,5 +222,9 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void dummyFunction() {
+		
+	}
 
 }
