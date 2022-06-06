@@ -164,7 +164,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqlString)) {
 			pStatement.setInt(1, amount);
-			pStatement.setInt(2, ticket.getUserID());
+			pStatement.setInt(2, ticket.getId());
 
 			pStatement.execute();
 			
@@ -181,7 +181,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqlString)) {
 			pStatement.setString(1, ticketType);
-			pStatement.setInt(2, ticket.getUserID());
+			pStatement.setInt(2, ticket.getId());
 
 			pStatement.execute();
 			
@@ -198,7 +198,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqlString)) {
 			pStatement.setString(1, ticketStatus);
-			pStatement.setInt(2, ticket.getUserID());
+			pStatement.setInt(2, ticket.getId());
 
 			pStatement.execute();
 			
@@ -214,7 +214,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 		Connection connection = ConnectionService.ReturnConnection();
 		
 		try(PreparedStatement pStatement = connection.prepareStatement(sqlString)) {
-			pStatement.setInt(1, ticket.getUserID());
+			pStatement.setInt(1, ticket.getId());
 
 			pStatement.execute();
 			
