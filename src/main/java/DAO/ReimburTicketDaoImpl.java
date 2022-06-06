@@ -192,7 +192,7 @@ public class ReimburTicketDaoImpl implements ReimburTicketDao {
 
 	@Override
 	public void updateTicketStatus(ReimbursementTicket ticket, String ticketStatus) {
-		String sqlString = "UPDATE reimbursement_ticket SET current_ticket_status=? WHERE user_id=?";
+		String sqlString = "UPDATE reimbursement_ticket SET current_ticket_status=CAST(? AS ticket_status) WHERE user_id=?";
 		
 		Connection connection = ConnectionService.ReturnConnection();
 		

@@ -47,7 +47,7 @@ public class RequestMapping {
 		
 		
 		app.get("/ViewAllRequests", ctx ->{
-			boolean isFM = Boolean.parseBoolean(ctx.sessionAttribute("isFinanceManager"));
+			Boolean isFM = ctx.sessionAttribute("isFinanceManager");
 			if(AuthenticationController.VerifyUserLogInStatus(ctx) && isFM) {//fix boolean stuff for checking financial manager
 				TicketController tController = new TicketController();
 				tController.getAllTickets(ctx);
@@ -58,7 +58,8 @@ public class RequestMapping {
 		});
 		
 		app.post("/ApproveRequests", ctx ->{//Form parameter: ticketID, ticketStatus
-			if(AuthenticationController.VerifyUserLogInStatus(ctx) && Boolean.valueOf(ctx.sessionAttribute("isFinanceManager"))) {
+			Boolean isFm = ctx.sessionAttribute("isFinanceManager");
+			if(AuthenticationController.VerifyUserLogInStatus(ctx) && isFm) {
 				TicketController tController = new TicketController();
 				tController.changeTicketStatus(ctx);
 			}
