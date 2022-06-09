@@ -24,7 +24,7 @@ public class Main {
 					config ->{
 						config.registerPlugin(new MicrometerPlugin(registry));
 					}
-				).start(9090);
+				).start(9091);
 		
 		MonitoringController.MoniteringPaths(app, registry);
 		
