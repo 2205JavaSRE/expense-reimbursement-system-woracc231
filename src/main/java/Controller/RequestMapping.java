@@ -3,9 +3,18 @@ package Controller;
 import org.eclipse.jetty.http.HttpStatus;
 
 import io.javalin.Javalin;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
 
 public class RequestMapping {
-	public static void RouteConfigurations(Javalin app) {
+	public static void RouteConfigurations(Javalin app, PrometheusMeterRegistry registry) {
+		
+		
+		Counter reimbursementRequestCounter = Counter.builder("reimbursement_path")
+				.description("Counter to keep track of reimbursement requests during this session")
+				.tag("purpose", "traffic")
+				.register(registry);
+		
 		
 		app.post("/login", ctx ->{
 			AuthenticationController.AuthenticateUserForSession(ctx);
@@ -25,6 +34,11 @@ public class RequestMapping {
 			if(AuthenticationController.VerifyUserLogInStatus(ctx)) {
 				TicketController tController = new TicketController();
 				tController.submitNewTicket(ctx);
+				
+				//---counter
+				
+				reimbursementRequestCounter.increment(1);
+				
 			}else {
 				ctx.status(HttpStatus.FORBIDDEN_403);
 			}
